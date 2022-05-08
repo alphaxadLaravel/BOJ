@@ -1,6 +1,9 @@
-import 'package:boj/screens/components/buttons.dart';
-import 'package:boj/screens/components/textfields.dart';
+import 'package:boj/screens/home/home.dart';
 import 'package:flutter/material.dart';
+import '../../components/buttons.dart';
+import '../../components/privacy_policy.dart';
+import '../../components/terms.dart';
+import '../../components/textfields.dart';
 
 class Signup extends StatefulWidget {
   const Signup({Key? key}) : super(key: key);
@@ -30,15 +33,12 @@ class _SignupState extends State<Signup> {
             child: Form(
               child: Column(
                 children: [
-                  SizedBox(
-                    height: size.height * 0.04,
-                  ),
                   Image.asset(
                     'assets/images/logo.png',
-                    height: size.height * 0.25,
+                    height: size.height * 0.2,
                   ),
                   const Text(
-                    "Signup",
+                    "Create Account",
                     style: TextStyle(
                         fontSize: 22,
                         fontWeight: FontWeight.bold,
@@ -68,7 +68,9 @@ class _SignupState extends State<Signup> {
                                 prefix: Icons.person,
                                 onChanged: (value) {},
                                 controller: fullname,
-                                validate: (value) {},
+                                validate: (value) {
+                                  return null;
+                                },
                                 prefixWord: ""),
                             SizedBox(
                               height: size.height * 0.02,
@@ -80,7 +82,9 @@ class _SignupState extends State<Signup> {
                                 prefix: Icons.email,
                                 onChanged: (value) {},
                                 controller: email,
-                                validate: (value) {},
+                                validate: (value) {
+                                  return null;
+                                },
                                 prefixWord: ""),
                             SizedBox(
                               height: size.height * 0.02,
@@ -92,7 +96,9 @@ class _SignupState extends State<Signup> {
                                 prefix: Icons.male,
                                 onChanged: (value) {},
                                 controller: fullname,
-                                validate: (value) {},
+                                validate: (value) {
+                                  return null;
+                                },
                                 prefixWord: ""),
                             SizedBox(
                               height: size.height * 0.02,
@@ -106,7 +112,23 @@ class _SignupState extends State<Signup> {
                                     step1 = false;
                                     step2 = true;
                                   });
-                                })
+                                }),
+                            SizedBox(
+                              height: size.height * 0.02,
+                            ),
+                            // Row(
+                            //     mainAxisAlignment: MainAxisAlignment.end,
+                            //     children: const [
+                            //       Text(
+                            //         "Step ",
+                            //         style: TextStyle(fontSize: 13),
+                            //       ),
+                            //       Text(
+                            //         "1 / 2",
+                            //         style: TextStyle(
+                            //             fontSize: 13, color: Colors.red),
+                            //       ),
+                            //     ])
                           ]
                         : [
                             TextInputs(
@@ -116,7 +138,9 @@ class _SignupState extends State<Signup> {
                                 prefix: Icons.map_sharp,
                                 onChanged: (value) {},
                                 controller: country,
-                                validate: (value) {},
+                                validate: (value) {
+                                  return null;
+                                },
                                 prefixWord: ""),
                             SizedBox(
                               height: size.height * 0.02,
@@ -128,7 +152,9 @@ class _SignupState extends State<Signup> {
                                 prefix: Icons.location_city,
                                 onChanged: (value) {},
                                 controller: city,
-                                validate: (value) {},
+                                validate: (value) {
+                                  return null;
+                                },
                                 prefixWord: ""),
                             SizedBox(
                               height: size.height * 0.02,
@@ -140,8 +166,56 @@ class _SignupState extends State<Signup> {
                                 prefix: Icons.phone,
                                 onChanged: (value) {},
                                 controller: phone,
-                                validate: (value) {},
+                                validate: (value) {
+                                  return null;
+                                },
                                 prefixWord: "+255"),
+                            SizedBox(
+                              height: size.height * 0.02,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                const Text(
+                                  'On register, you agree to ',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontSize: 13,
+                                  ),
+                                ),
+                                InkWell(
+                                  child: const Text("terms ",
+                                      style: TextStyle(
+                                          fontSize: 13,
+                                          color: Colors.lightBlueAccent,
+                                          decoration:
+                                              TextDecoration.underline)),
+                                  onTap: () {
+                                    Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                const TermsAndCondtion()));
+                                  },
+                                ),
+                                const Text(
+                                  ' & ',
+                                ),
+                                InkWell(
+                                  child: const Text("privacy policy",
+                                      style: TextStyle(
+                                          fontSize: 13,
+                                          color: Colors.lightBlueAccent,
+                                          decoration:
+                                              TextDecoration.underline)),
+                                  onTap: () {
+                                    Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                const PrivacyPolicy()));
+                                  },
+                                ),
+                              ],
+                            ),
                             SizedBox(
                               height: size.height * 0.02,
                             ),
@@ -149,7 +223,28 @@ class _SignupState extends State<Signup> {
                                 text: "Finish",
                                 textColor: Colors.white,
                                 backgroundColor: Colors.lightBlueAccent,
-                                onPressed: () {})
+                                onPressed: () {
+                                  Navigator.of(context).pushReplacement(
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              const BOJHome()));
+                                }),
+                            SizedBox(
+                              height: size.height * 0.01,
+                            ),
+                            // Row(
+                            //     mainAxisAlignment: MainAxisAlignment.end,
+                            //     children: const [
+                            //       Text(
+                            //         "Step ",
+                            //         style: TextStyle(fontSize: 13),
+                            //       ),
+                            //       Text(
+                            //         "2 / 2",
+                            //         style: TextStyle(
+                            //             fontSize: 13, color: Colors.red),
+                            //       ),
+                            //     ])
                           ],
                   )
                 ],

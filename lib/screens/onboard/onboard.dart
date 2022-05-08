@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:boj/screens/onboard/onboard_data.dart';
 
-import '../user/signup/signup.dart';
+import '../signup/signup.dart';
 
 class OnBoardScreen extends StatefulWidget {
   const OnBoardScreen({Key? key}) : super(key: key);
@@ -91,7 +91,7 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
                           Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => const Signup()));
+                                  builder: (context) => const Signup()));
                         },
                       )
                     : Row(

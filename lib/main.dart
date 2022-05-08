@@ -1,5 +1,5 @@
+import 'package:boj/routes/routes.dart';
 import 'package:boj/screens/onboard/onboard.dart';
-import 'package:boj/screens/routes/routes.dart';
 import 'package:flutter/material.dart';
 
 int? isSeen;

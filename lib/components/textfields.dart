@@ -23,20 +23,25 @@ class TextInputs extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      keyboardType: type,
-      onChanged: onChanged,
-      controller: TextEditingController(),
-      validator: validate,
-      decoration: InputDecoration(
-          hintText: hint,
-          labelText: labelname,
-          prefix: Text(prefixWord),
-          border: inputBorder(),
-          focusedBorder: focusedInputBorder(),
-          focusedErrorBorder: focusedErrorBorder(),
-          errorBorder: errorInputBorder(),
-          prefixIcon: Icon(prefix)),
+    Size size = MediaQuery.of(context).size;
+    return SizedBox(
+      width: size.width * 0.9,
+      height: size.height * 0.065,
+      child: TextFormField(
+        keyboardType: type,
+        onChanged: onChanged,
+        controller: TextEditingController(),
+        validator: validate,
+        decoration: InputDecoration(
+            hintText: hint,
+            labelText: labelname,
+            prefix: Text(prefixWord),
+            border: inputBorder(),
+            focusedBorder: focusedInputBorder(),
+            focusedErrorBorder: focusedErrorBorder(),
+            errorBorder: errorInputBorder(),
+            prefixIcon: Icon(prefix)),
+      ),
     );
   }
 }
@@ -44,7 +49,7 @@ class TextInputs extends StatelessWidget {
 OutlineInputBorder focusedErrorBorder() {
   return const OutlineInputBorder(
     borderRadius: BorderRadius.all(
-      Radius.circular(20),
+      Radius.circular(6),
     ),
     borderSide: BorderSide(color: Colors.lightBlueAccent),
   );
@@ -53,7 +58,7 @@ OutlineInputBorder focusedErrorBorder() {
 OutlineInputBorder focusedInputBorder() {
   return const OutlineInputBorder(
     borderRadius: BorderRadius.all(
-      Radius.circular(20),
+      Radius.circular(6),
     ),
     borderSide: BorderSide(color: Colors.lightBlueAccent),
   );
@@ -62,7 +67,7 @@ OutlineInputBorder focusedInputBorder() {
 OutlineInputBorder errorInputBorder() {
   return const OutlineInputBorder(
     borderRadius: BorderRadius.all(
-      Radius.circular(20),
+      Radius.circular(6),
     ),
     borderSide: BorderSide(color: Colors.red),
   );
@@ -71,7 +76,7 @@ OutlineInputBorder errorInputBorder() {
 OutlineInputBorder inputBorder() {
   return const OutlineInputBorder(
     borderRadius: BorderRadius.all(
-      Radius.circular(20),
+      Radius.circular(6),
     ),
     borderSide: BorderSide(color: Colors.black26),
   );
