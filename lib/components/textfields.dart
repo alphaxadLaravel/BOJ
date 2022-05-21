@@ -46,6 +46,55 @@ class TextInputs extends StatelessWidget {
   }
 }
 
+class Gender extends StatefulWidget {
+  const Gender({Key? key}) : super(key: key);
+
+  @override
+  _GenderState createState() => _GenderState();
+}
+
+class _GenderState extends State<Gender> {
+  final List<String> gender = [
+    'Male',
+    'Female',
+  ];
+
+  String? selectedRank;
+
+  @override
+  Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+    return SizedBox(
+      width: size.width * 0.9,
+      height: size.height * 0.069,
+      child: DropdownButtonFormField(
+        decoration: const InputDecoration(
+          hintText: 'Gender',
+          labelText: "Gender",
+          prefixIcon: Icon(Icons.male),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.all(
+              Radius.circular(6),
+            ),
+          ),
+        ),
+        items: gender.map((rank) {
+          return DropdownMenuItem(
+            value: rank,
+            child: Text(rank),
+          );
+        }).toList(),
+        onChanged: (val) => setState(() => selectedRank = val as String?),
+        validator: (value) {
+          if (value == null) {
+            return "Please choose the Gender";
+          }
+        },
+      ),
+    );
+  }
+}
+
 OutlineInputBorder focusedErrorBorder() {
   return const OutlineInputBorder(
     borderRadius: BorderRadius.all(

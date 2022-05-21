@@ -1,5 +1,6 @@
-import 'package:boj/routes/routes.dart';
-import 'package:boj/screens/onboard/onboard.dart';
+import 'package:boj/constants/routes.dart';
+import 'package:boj/constants/theme.dart';
+import 'package:boj/screens/boj.dart';
 import 'package:flutter/material.dart';
 
 int? isSeen;
@@ -15,11 +16,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'OBJ App',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        // primaryColor: kPrimaryColor,
-        scaffoldBackgroundColor: Colors.white,
-      ),
-      initialRoute: OnBoardScreen.id,
+      theme: OBJTheme.lightTheme,
+      darkTheme: OBJTheme.darkTheme,
+      themeMode: ThemeMode.system,
+      initialRoute: BOJHome.id,
       routes: routes,
     );
   }

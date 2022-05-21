@@ -1,11 +1,13 @@
-import 'package:flutter/material.dart';
+import 'package:boj/constants/app_text.dart';
 import 'package:boj/screens/onboard/onboard_data.dart';
-
-import '../signup/signup.dart';
+import 'package:boj/screens/welcome.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class OnBoardScreen extends StatefulWidget {
   const OnBoardScreen({Key? key}) : super(key: key);
-  static String id = 'onBoardScreen';
+  static String id = '/onBoardScreen';
 
   @override
   _OnBoardScreenState createState() => _OnBoardScreenState();
@@ -26,6 +28,13 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
         shape: BoxShape.circle,
       ),
     );
+  }
+
+  seenOnBoard() async {
+    int seen = 0;
+
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setInt('onBoard', seen);
   }
 
   @override
@@ -51,28 +60,25 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
                     SizedBox(
                       height: size.height * 0.2,
                     ),
-                    Image.asset(
+                    SvgPicture.asset(
                       boardContents[index].image,
                       height: size.height * 0.38,
                     ),
                     SizedBox(
                       height: size.height * 0.03,
                     ),
-                    Text(
-                      boardContents[index].title,
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
+                    Text(boardContents[index].title,
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
-                          color: Colors.black54),
-                    ),
+                        )),
                     SizedBox(
                       height: size.height * 0.02,
                     ),
                     Text(
                       boardContents[index].paragraphs,
                       textAlign: TextAlign.center,
-                      style: const TextStyle(color: Colors.black54),
                     ),
                     SizedBox(
                       height: size.height * 0.02,
@@ -86,26 +92,34 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
               children: [
                 curentPage == boardContents.length - 1
                     ? GetStarted(
-                        btnName: 'Get Started',
+                        btnName: startBtn,
                         onPressed: () async {
+                          await seenOnBoard();
                           Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const Signup()));
+                                  builder: (context) => const WelcomeScreen()));
                         },
                       )
                     : Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           OnBoardNavBtn(
-                            name: 'Skip',
-                            onPressed: () async {},
+                            name: skip,
+                            onPressed: () async {
+                              await seenOnBoard();
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const WelcomeScreen()));
+                            },
                           ),
                           Row(
                               children: List.generate(boardContents.length,
                                   (index) => dotIndicator(index))),
                           OnBoardNavBtn(
-                            name: 'Next',
+                            name: next,
                             onPressed: () {
                               _pageController.nextPage(
                                   duration: const Duration(milliseconds: 400),

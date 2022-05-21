@@ -1,4 +1,4 @@
-// ignore_for_file: file_names
+import 'package:boj/constants/app_text.dart';
 
 class OnBoarding {
   final String title;
@@ -14,25 +14,23 @@ class OnBoarding {
 
 List<OnBoarding> boardContents = [
   OnBoarding(
-    title: "Matangazo Yetu!",
-    paragraphs: "Pata matangazo yote \nKuhusu makongamano ya dini.",
-    image: 'assets/images/nots.gif',
+    title: tittle1,
+    paragraphs: paragraph1,
+    image: image1,
   ),
   OnBoarding(
-    title: "Muhutasari",
-    paragraphs:
-        "Pata muhutasari juu ya makongamano \n yaliyofanyika sehemu mbalimbali",
-    image: 'assets/images/breaking.gif',
+    title: tittle2,
+    paragraphs: paragraph2,
+    image: image2,
   ),
   OnBoarding(
-    title: "Tupo live",
-    paragraphs: "Peruzi live makongamano yote \n ya dini popote ulipo",
-    image: 'assets/images/live.gif',
+    title: tittle3,
+    paragraphs: paragraph3,
+    image: image3,
   ),
   OnBoarding(
-    title: "Mafundisho",
-    paragraphs:
-        "Pata mafundisho mbalimbali ya dini ya kikristo \n kutoka kwa watumishi mbalimbali",
-    image: 'assets/images/holy.gif',
+    title: tittle4,
+    paragraphs: paragraph4,
+    image: image4,
   ),
 ];

@@ -18,7 +18,7 @@ class Button extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return SizedBox(
-        width: size.width * 0.9,
+        width: size.width * 0.88,
         child: ClipRRect(
           borderRadius: BorderRadius.circular(6),
           child: FlatButton(
